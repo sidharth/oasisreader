@@ -23,5 +23,27 @@ val sampleArticlesList = listOf<ArticleItem>(
         title = "China Chips and Moore’s Law",
         excerpt = "On Tuesday the Biden administration tightened export controls for advanced AI chips being sold to China; the primary target was Nvidia’s H800 and A800 chips, which were specifically designed to skirt controls put in place last year.",
         date = "2023-10-18"
+    ),
+    ArticleItem(
+        contentUrl = "https://stratechery.com/2023/china-chips-and-moores-law/",
+        imgUrl = null,
+        title = "China Chips and Moore’s Law",
+        excerpt = "On Tuesday the Biden administration tightened export controls for advanced AI chips being sold to China; the primary target was Nvidia’s H800 and A800 chips, which were specifically designed to skirt controls put in place last year.",
+        date = "2023-10-18"
+    ),
+    ArticleItem(
+        contentUrl = "https://stratechery.com/2023/china-chips-and-moores-law/",
+        imgUrl = null,
+        title = "China Chips and Moore’s Law",
+        excerpt = "On Tuesday the Biden administration tightened export controls for advanced AI chips being sold to China; the primary target was Nvidia’s H800 and A800 chips, which were specifically designed to skirt controls put in place last year.",
+        date = "2023-10-18"
+    ),
+    ArticleItem(
+        contentUrl = "https://stratechery.com/2023/china-chips-and-moores-law/",
+        imgUrl = null,
+        title = "China Chips and Moore’s Law",
+        excerpt = "On Tuesday the Biden administration tightened export controls for advanced AI chips being sold to China; the primary target was Nvidia’s H800 and A800 chips, which were specifically designed to skirt controls put in place last year.",
+        date = "2023-10-18"
     )
+
 );
