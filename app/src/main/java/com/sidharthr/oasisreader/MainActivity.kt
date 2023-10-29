@@ -26,6 +26,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,6 +40,14 @@ import androidx.navigation.compose.rememberNavController
 import com.sidharthr.oasisreader.ui.theme.OasisReaderTheme
 
 class MainActivity : ComponentActivity() {
+
+    val provider = GoogleFont.Provider(
+        providerAuthority = "com.google.android.gms.fonts",
+        providerPackage = "com.google.android.gms",
+        certificates = R.array.com_google_android_gms_fonts_certs
+    )
+    val monospaceFamily = FontFamily(Font( GoogleFont("Space Mono"), provider));
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,7 +67,12 @@ class MainActivity : ComponentActivity() {
                             LazyColumn(
                                 content = {
                                     item {
-                                        Text(modifier = Modifier.padding(16.dp), fontSize = 24.sp, text = "Oasis Reader")
+                                        Text(
+                                            modifier = Modifier.padding(16.dp),
+                                            fontSize = 24.sp,
+                                            fontFamily = monospaceFamily,
+                                            fontWeight = FontWeight.ExtraBold,
+                                            text = "Oasis Reader")
                                     }
                                     items(sampleArticlesList.size) { index ->
                                         ArticleCard(articleItem = sampleArticlesList[index], onClick = {
