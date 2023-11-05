@@ -1,5 +1,8 @@
 # Changelog
 
+## [Unreleased] - 2023-11-05
+- Add readability view
+
 ## [Unreleased] - 2023-10-27
 - Home page UI
 - Article cards UI
