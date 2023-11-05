@@ -11,8 +11,8 @@ data class ArticleMeta(
 
 data class Article (
     val meta: ArticleMeta,
-    val originalContentHtml: String,
-    val readableContentHtml: String
+    val originalContentHtml: String? = null,
+    val readableContentHtml: String? = null
 )
 
 // TODO: Eventually Replace this with a list of articles from the database.

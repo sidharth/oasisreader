@@ -1,7 +1,8 @@
 # Changelog
 
 ## [Unreleased] - 2023-11-05
-- Add readability view
+- Open webpage with URL
+- Added rudimentary entry and exit animation.
 
 ## [Unreleased] - 2023-10-27
 - Home page UI

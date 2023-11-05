@@ -6,6 +6,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandIn
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,6 +28,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -57,6 +69,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+//                    Keep state of the current selected article.
+                    val currentArticle = remember { mutableStateOf(Article(meta= sampleArticlesList[0])) }
+
                     NavHost(
                         navController = navController,
                         startDestination = "home") {
@@ -75,6 +90,8 @@ class MainActivity : ComponentActivity() {
                                     }
                                     items(sampleArticlesList.size) { index ->
                                         ArticleCard(articleMeta = sampleArticlesList[index], onClick = {
+                                            currentArticle.value = Article(sampleArticlesList[index])
+//                                            currentArticle.setValue(sampleArticlesList[index])
                                             navController.navigate("article")
                                         })
                                     }
@@ -82,12 +99,12 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("article",
                         enterTransition = {
-                            EnterTransition.None
+                            expandVertically { 200 } + fadeIn(animationSpec = tween(200))
                         },
                             exitTransition = {
-                            ExitTransition.None
+                            shrinkVertically { 200 } + fadeOut(animationSpec = tween(200))
                         }) {
-                            FullArticle(article = sampleArticle)
+                            FullArticle(article = currentArticle.value)
                         }
                     }
                 }
@@ -98,15 +115,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FullArticle(article: Article) {
-//    WebView(url = article.meta.contentUrl)
     val context = LocalContext.current
     val webView = WebView(context)
-
     webView.loadUrl(article.meta.contentUrl)
-//    webView.loadData(article.readableContentHtml, "text/html", "UTF-8")
-//
     AndroidView(
-        factory = { context -> webView }
+        modifier = Modifier.fillMaxSize(),
+        factory = { webView }
     )
 }
 
